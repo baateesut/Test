@@ -52,7 +52,7 @@
     async function sendMsg() {
     }
 
-    function getContext() {
+    async function getContext() {
       document.getElementById("type").append(liff.getContext().type)
       document.getElementById("viewType").append(liff.getContext().viewType)
       document.getElementById("utouId").append(liff.getContext.utouId)
@@ -60,6 +60,7 @@
       document.getElementById("groupId").append(liff.getContext.groupId)
 
     }
+
     async function getUserProfile() {
       const profile = await liff.getUserProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
@@ -69,7 +70,7 @@
       document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
-    function getEnvironment() {
+    async function getEnvironment() {
       document.getElementById("os").append(liff.getOS())
       document.getElementById("language").append(liff.getLanguage())
       document.getElementById("version").append(liff.getVersion())
