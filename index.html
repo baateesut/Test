@@ -24,25 +24,16 @@
   <p id="friendship"><b>isFriendship:</b> </p>
   <p id="scanCode"><b>Code:</b> </p>
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
-  <p id="universalLink1"><b>Universal Link:</b> </p>
-  <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
-  <p><a href="liff/path/?param=9">Link to Path</a></p>
 
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
   <button onclick="openWindow()">Open Window</button>
   <button id="btnScanCode" onclick="scanCode()">Scan Code</button>
-  <button id="btnLogOut" onclick="logOut()">Log Out</button>
-  <button id="btnClose" onclick="closed()">Close</button>
+  <button id="btnLogOut" onclick ="logOut()">Log Out</button>
+  <button id="btnClose" onclick = "closed()">Close</button>
 
-  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  <script src="https://static.line-scdn.net/liff/edge/2.7.1/sdk.js"></script>
   <script>
-    function createUniversalLink() {
-    }
-
-    async function shareMsg() {
-    }
-
     function logOut() {
     }
 
@@ -62,8 +53,13 @@
     }
 
     function getContext() {
-    }
+      document.getElementById("type").append(liff.getContext().type)
+      document.getElementById("viewType").append(liff.getContext().viewType)
+      document.getElementById("utouId").append(liff.getContext.utouId)
+      document.getElementById("roomId").append(liff.getContext.roomId)
+      document.getElementById("groupId").append(liff.getContext.groupId)
 
+    }
     async function getUserProfile() {
       const profile = await liff.getUserProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
@@ -74,11 +70,12 @@
     }
 
     function getEnvironment() {
-      document.getElementById("os").append(liff.getOS()) //แสดงค่าการเปิด liff บนos อะไร//
+      document.getElementById("os").append(liff.getOS())
       document.getElementById("language").append(liff.getLanguage())
       document.getElementById("version").append(liff.getVersion())
       document.getElementById("accessToken").append(liff.getAccessToken())
       document.getElementById("isInClient").append(liff.isInClient())
+
      if(liff.isInClient()) 
      {
         document.getElementById("bntLogOut").style.display = "none"
@@ -94,12 +91,13 @@
       await liff.init({ liffId: "1655618332-DbOEWKmd" })
       getEnvironment()
       getUserProfile()
-      // getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }
     main()
   </script>
+
 </body>
 
 </html>
