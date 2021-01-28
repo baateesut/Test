@@ -65,13 +65,18 @@
     }
 
     async function getUserProfile() {
+      const profile = await liff.getUserProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("statusMessage").append(profile.statusMessage)
+      document.getElementById("displayName").append(profile.displayName)
     }
 
     function getEnvironment() {
       document.getElementById("os").append(liff.getOS()) //แสดงค่าการเปิด liff บนos อะไร//
       document.getElementById("language").append(liff.getLanguage())
       document.getElementById("version").append(liff.getVersion())
-      document.getElementById("assessToken").append(liff.getAccessToken())
+      document.getElementById("accessToken").append(liff.getAccessToken())
       document.getElementById("isInClient").append(liff.isInClient())
      if(liff.isInClient()) 
      {
@@ -87,7 +92,7 @@
     async function main() {
       await liff.init({ liffId: "1655618332-DbOEWKmd" })
       getEnvironment()
-      // getUserProfile()
+      getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
