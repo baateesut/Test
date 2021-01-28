@@ -32,7 +32,7 @@
   <button id="btnLogOut" onclick ="logOut()">Log Out</button>
   <button id="btnClose" onclick = "closed()">Close</button>
 
-  <script src="https://static.line-scdn.net/liff/edge/2.7.1/sdk.js"></script>
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.7.1/sdk.js"></script>
   <script>
     function logOut() {
     }
@@ -79,8 +79,7 @@
      if(liff.isInClient()) 
      {
         document.getElementById("bntLogOut").style.display = "none"
-     }
-      else{
+     }    else{
         document.getElementById("btnMsg").style.display = "none"
         document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
